@@ -1,0 +1,355 @@
+* {
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* cursor pointer an all actions*/
+[data-action] {
+  cursor: pointer;
+}
+
+/* Styling for the sort --> NOT WORKING!! */
+
+/* fonts --> start*/
+h1,
+h2,
+p,
+th,
+button {
+  color: #ffe180;
+  font-family: "Old Standard TT", serif;
+}
+p,
+th,
+button {
+  font-size: 1.2em;
+}
+li {
+  color: #ffe180;
+  font-family: "Old Standard TT", serif;
+  list-style: none;
+  padding: 1rem;
+}
+ul {
+  padding: 0;
+}
+li.filter {
+  padding-left: 2rem;
+}
+li.filter:hover {
+  background-color: #0b0b0b;
+}
+
+#column_left p {
+  color: black;
+}
+
+td {
+  color: #949494;
+  font-size: 1.1rem;
+}
+
+th {
+  text-align: left;
+}
+header h2 {
+  padding: 1rem;
+} /* <-- end */
+
+/* main content*/
+header {
+  background-color: #0b0b0b;
+}
+
+#splash {
+  background-image: url(my_images/splash_img.jpg);
+  min-height: 400px;
+  height: 50vh;
+  width: 100vw;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#splash #school_crest {
+  background-image: url(my_images/pngwing.com.png);
+  height: 300px;
+  width: 280px;
+  background-size: cover;
+}
+#admin_interaction {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "empty topbar topbar topbar"
+    "sidebar container container container";
+}
+#empty {
+  grid-area: empty;
+  background-color: #000000;
+  width: 25vw; /*test*/
+  height: 200px;
+}
+
+#top_bar {
+  grid-area: topbar;
+  background-color: #0b0b0b;
+  width: 75vw; /*test*/
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#side_bar {
+  grid-area: sidebar;
+  background-color: #0b0b0b;
+  width: 25vw; /*test*/
+}
+#list {
+  grid-area: container;
+  background-color: rgb(29, 29, 29); /* change */
+  width: 75vw; /*test*/
+}
+
+/* Filter list - style --> start*/
+button#filter_btn {
+  background-color: #0b0b0b;
+  border: 1px solid #ffe180;
+  width: 300px;
+  height: 50px;
+}
+
+input {
+  background-color: #0b0b0b;
+  border: 1px solid #ffe180;
+  width: 300px;
+  height: 50px;
+  color: white;
+  padding: 1rem;
+  font-family: "Old Standard TT", serif;
+  font-size: 1.2em;
+}
+#filter ul {
+  position: absolute;
+  border: 1px solid #ffe180;
+  background-color: #222222;
+  width: 300px;
+} /* <-- end */
+
+/* additional classes --> start */
+.hide {
+  visibility: hidden;
+} /* <-- end */
+
+/* Popup single student information style --> start*/
+#popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} /* <-- end */
+
+.single_student {
+  padding: 2em;
+  /*background-color: #981c1c; */ /* test, has to change depending on house*/
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+
+.full_name {
+  font-size: 2rem;
+  padding-bottom: 1rem;
+}
+
+#column_left {
+  background-color: #decba0;
+  display: flex;
+  flex-direction: row;
+  padding: 3rem;
+}
+
+#column_right {
+  background-color: #decba0;
+  margin-left: 2em;
+  padding: 3rem;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+}
+
+#container div {
+  display: flex;
+  flex-direction: column;
+}
+
+/* only for styling*/
+#student_image {
+  /*background-image: url(images/abbott_h.png);*/ /*<-- placeholder*/
+  width: 95px;
+}
+
+#single_student_info {
+  margin-left: 3rem;
+}
+
+.student_options {
+  background-color: #c7b893;
+  border: 1px solid #000;
+  color: #000;
+  width: 300px;
+  height: 50px;
+}
+
+.closebutton {
+  background-color: #981c1c; /*placeholder*/
+  border: 0;
+  position: absolute;
+  border-radius: 50%;
+  right: 0.3em;
+  top: 0.3em;
+  width: 4em;
+  height: 4em;
+}
+/* colors of the different houses for popup --> start */
+/* REMEMBER --> on .closebutton & .single_student */
+.gryffindor_color {
+  background-color: #981c1c;
+}
+.slytherin_color {
+  background-color: #0e6351;
+}
+.hufflepuff_color {
+  background-color: #c68a00;
+}
+.ravenclaw_color {
+  background-color: #024b86;
+}
+.default_color {
+  background-color: ivory;
+} /* <-- end */
+
+footer {
+  background-color: #000000;
+}
+
+#list tbody tr:nth-child(odd) td {
+  background-color: rgb(24, 24, 24);
+}
+
+#list tbody tr:nth-child(even) td {
+  background-color: #141414;
+}
+
+.student_profile_image {
+  height: 70px;
+}
+
+.student_profile_image img {
+  width: 50px;
+  margin: 0.5rem;
+  margin-left: 1rem;
+}
+
+.list_categories th {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding-left: 1rem;
+}
+
+.student_info {
+  padding-left: 1rem;
+}
+.house_crest {
+  width: 100px;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.close_warning {
+  background-color: transparent;
+  border: 1px solid #ffe180;
+  position: absolute;
+  border-radius: 50%;
+  right: 0.3em;
+  top: 0.3em;
+  width: 3em;
+  height: 3em;
+  cursor: pointer;
+}
+.close_warning:hover {
+  background-color: #181818;
+}
+.dialog {
+  border-radius: 12px;
+  padding: 2em;
+  background-color: rgb(46, 46, 46);
+  position: relative;
+}
+.warning {
+  margin-bottom: 2rem;
+  font-size: 3rem;
+}
+
+#removeother {
+  margin-top: 2rem;
+  background-color: #222222;
+  border: 1px solid #ffe180;
+  width: 300px;
+  height: 50px;
+  cursor: pointer;
+}
+
+#removeother:hover {
+  background-color: #181818;
+}
+
+.column_top {
+  margin-top: 2rem;
+  margin-left: 4rem;
+}
+
+.column_top p,
+.column_bottom p {
+  margin-top: 1rem;
+}
+
+.column_bottom {
+  margin-top: 4rem;
+  margin-left: 4rem;
+}
+
+#sorting th.sortby {
+  text-decoration: underline;
+}
+#sorting th.sortby[data-sort-direction="asc"]::after {
+  content: "↓";
+}
+#sorting th.sortby[data-sort-direction="desc"]::after {
+  content: "↑";
+}
+
+#list {
+  padding-right: 2rem;
+  padding-left: 2rem;
+}

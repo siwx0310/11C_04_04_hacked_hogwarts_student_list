@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hacked Hogwarts | Siw</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Old+Standard+TT&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <h2>Hogwarts student list - class of 1991</h2>
+    </header>
+    <main>
+      <div id="splash">
+        <div id="school_crest"></div>
+        <h1>Hogwarts school of witchcraft and wizardry</h1>
+      </div>
+      <section id="admin_interaction">
+        <div id="empty"></div>
+        <div id="top_bar">
+          <div id="filter">
+            <button id="filter_btn">Filter</button>
+            <ul class="hide">
+              <li class="filter" data-action="filter" data-filter="gryffindor">
+                Students of Gryffindor
+              </li>
+              <li class="filter" data-action="filter" data-filter="slytherin">
+                Students of Slytherin
+              </li>
+              <li class="filter" data-action="filter" data-filter="hufflepuff">
+                Students of HyfflePuff
+              </li>
+              <li class="filter" data-action="filter" data-filter="ravenclaw">
+                Students of Ravenclaw
+              </li>
+              <li
+                class="filter"
+                data-action="filter"
+                data-filter="resposibilities"
+              >
+                Students w. resposibilities
+              </li>
+              <li
+                class="filter"
+                data-action="filter"
+                data-filter="expelledstudents"
+              >
+                Expelled Students
+              </li>
+              <li class="filter" data-action="filter" data-filter="all">
+                All active students
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <input
+              type="search"
+              placeholder="Search student"
+              id="search"
+              name="search"
+            />
+          </div>
+        </div>
+
+        <div id="side_bar">
+          <div class="column_top">
+            <h2>Status of the students</h2>
+
+            <p id="displayed_students">Displayed students:</p>
+            <p id="total_students">Active students:</p>
+            <p id="notactive_students">Expelled students:</p>
+          </div>
+          <div class="column_bottom">
+            <h2>Status of the houses</h2>
+            <p id="gryffindor_students">Gryffindor:</p>
+            <p id="slytherin_students">Slytherin:</p>
+            <p id="hyfflepuff_students">Hufflepuff:</p>
+            <p id="ravenclaw_students">Ravenclaw:</p>
+          </div>
+        </div>
+
+        <table id="list" class="list_categories">
+          <thead>
+            <tr id="sorting">
+              <th>Profile Picture</th>
+              <th
+                data-action="sort"
+                data-sort-direction="asc"
+                data-sort="firstName"
+              >
+                First Name
+              </th>
+              <th
+                data-action="sort"
+                data-sort-direction="asc"
+                data-sort="middleName"
+              >
+                Middle Name
+              </th>
+              <th
+                data-action="sort"
+                data-sort-direction="asc"
+                data-sort="lastName"
+              >
+                Last Name
+              </th>
+              <th
+                data-action="sort"
+                data-sort-direction="asc"
+                data-sort="nickname"
+              >
+                Nick Name
+              </th>
+              <th
+                data-action="sort"
+                data-sort-direction="asc"
+                data-sort="house"
+              >
+                House
+              </th>
+              <th
+                data-action="sort"
+                data-sort-direction="asc"
+                data-sort="bloodstatus"
+              >
+                Blood Status
+              </th>
+              <th
+                data-action="sort"
+                data-sort-direction="asc"
+                data-sort="prefect"
+              >
+                Prefect
+              </th>
+              <th
+                data-action="sort"
+                data-sort-direction="asc"
+                data-sort="squad"
+              >
+                Squad
+              </th>
+              <th
+                data-action="sort"
+                data-sort-direction="asc"
+                data-sort="prefect"
+              >
+                Expelled
+              </th>
+            </tr>
+          </thead>
+          <tbody id="active">
+            <!-- student template will be copied and inserted here -->
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <footer>
+      <p>Siw Mehlin Højland Pedersen</p>
+      <p>3. semester 2021 - frontend</p>
+      <p>11C_04_04_Hacked_hogwarts_student_list</p>
+    </footer>
+
+    <template id="student">
+      <tr id="all_student_info">
+        <td class="student_profile_image" data-field="image">
+          <img src="" alt="" />
+        </td>
+
+        <td class="student_info" data-field="first_name">FIRST NAME</td>
+        <td class="student_info" data-field="middle_name">MIDDLE NAME</td>
+        <td class="student_info" data-field="last_name">LASTNAME</td>
+        <td class="student_info" data-field="nick_name">NICK NAME</td>
+        <td class="student_info" data-field="house">HOUSE</td>
+        <td class="student_info" data-field="blood_type">BLOOD TYPE</td>
+        <td class="student_info" data-field="prefect">NOT</td>
+        <td class="student_info" data-field="squad">NOT</td>
+        <td class="student_info" data-field="expel">NOT</td>
+      </tr>
+    </template>
+
+    <template id="expelled_student">
+      <tr id="all_student_info">
+        <td class="student_profile_image" data-field="expelled_image">
+          <img src="" alt="" />
+        </td>
+        <td class="student_info" data-field="expelled_first_name">
+          FIRST NAME
+        </td>
+        <td class="student_info" data-field="expelled_middle_name">
+          MIDDLE NAME
+        </td>
+        <td class="student_info" data-field="expelled_last_name">LASTNAME</td>
+        <td class="student_info" data-field="expelled_nick_name">NICK NAME</td>
+        <td class="student_info" data-field="expelled_house">HOUSE</td>
+        <td class="student_info" data-field="expelled_blood_type">
+          BLOOD TYPE
+        </td>
+        <td class="student_info" data-field="expelled_prefect">NOT</td>
+        <td class="student_info" data-field="expelled_expel">NOT</td>
+      </tr>
+    </template>
+
+    <!-- OBS: look after hide=true/false when doing JS-->
+    <div id="popup" class="hide">
+      <!--add hide after styleing complete -->
+      <div class="single_student" id="popup_box">
+        <div id="column_top">
+          <div id="house_crest">
+            <img src="" alt="" />
+          </div>
+        </div>
+        <div id="column_left">
+          <div>
+            <img src="" alt="" class="student_image" />
+          </div>
+          <div id="single_student_info">
+            <p class="full_name"></p>
+            <p class="house"></p>
+            <p class="gender"></p>
+            <p class="blood_type"></p>
+            <p class="prefect" data-field="single_prefect"></p>
+            <p class="squad" data-field="single_squad"></p>
+            <p class="expel_status"></p>
+            <p></p>
+          </div>
+        </div>
+        <div id="column_right">
+          <button class="closebutton" id="close">X</button>
+          <div id="container">
+            <button class="student_options clickexpel">
+              Expel student<span data-field="clickexpel"></span>
+            </button>
+            <div>
+              <button class="student_options addprefect">
+                Add to prefect<span data-field="addprefect"></span>
+              </button>
+              <button class="student_options removeprefect">
+                Remove from prefect<span data-field="removeprefect"></span>
+              </button>
+            </div>
+            <div>
+              <button class="student_options addsquad">
+                Add to squad<span data-field="addsquad"></span>
+              </button>
+              <button class="student_options removesquad">
+                Remove from squad<span data-field="removesquad"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- popup end -->
+
+    <!-- remove other -->
+    <div id="remove_other" class="modal hide">
+      <div class="dialog">
+        <button class="close_warning">X</button>
+        <h2 class="warning">Warning!</h2>
+        <p>
+          There can be only be one boy and one girl from each house.<br />
+          Do you want to remove the other Prefect?
+        </p>
+        <button id="removeother">
+          Remove <span data-field="otherprefect">other</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- try again -->
+    <div id="can_not_add" class="modal hide">
+      <div class="dialog">
+        <button class="close_warning">X</button>
+        <h2 class="warning">Warning!</h2>
+        <p>
+          To be a part of the inquisitorial squad, the student must be<br />
+          Pure-Blood or a student of the house Slytherin <br />
+          Try add another student who is!
+        </p>
+        <button id="removeother">I understand</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
