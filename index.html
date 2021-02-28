@@ -17,7 +17,7 @@
     </header>
     <main>
       <div id="splash">
-        <div id="school_crest"></div>
+        <div id="school_crest" class=""></div>
         <h1>Hogwarts school of witchcraft and wizardry</h1>
       </div>
       <section id="admin_interaction">
@@ -212,46 +212,47 @@
       <!--add hide after styleing complete -->
       <div class="single_student" id="popup_box">
         <div id="column_top">
-          <div id="house_crest">
-            <img src="" alt="" />
-          </div>
+          <img src="" alt="" />
         </div>
-        <div id="column_left">
-          <div>
-            <img src="" alt="" class="student_image" />
-          </div>
-          <div id="single_student_info">
-            <p class="full_name"></p>
-            <p class="house"></p>
-            <p class="gender"></p>
-            <p class="blood_type"></p>
-            <p class="prefect" data-field="single_prefect"></p>
-            <p class="squad" data-field="single_squad"></p>
-            <p class="expel_status"></p>
-            <p></p>
-          </div>
-        </div>
-        <div id="column_right">
-          <button class="closebutton" id="close">X</button>
-          <div id="container">
-            <button class="student_options clickexpel">
-              Expel student<span data-field="clickexpel"></span>
-            </button>
+        <div id="popup_student_info">
+          <div id="column_left">
             <div>
-              <button class="student_options addprefect">
-                Add to prefect<span data-field="addprefect"></span>
-              </button>
-              <button class="student_options removeprefect">
-                Remove from prefect<span data-field="removeprefect"></span>
-              </button>
+              <img src="" alt="" class="student_image" />
             </div>
-            <div>
-              <button class="student_options addsquad">
-                Add to squad<span data-field="addsquad"></span>
+            <div id="single_student_info">
+              <p class="full_name"></p>
+              <p class="nick_name"></p>
+              <p class="house"></p>
+              <p class="gender"></p>
+              <p class="blood_type"></p>
+              <p class="prefect" data-field="single_prefect"></p>
+              <p class="squad" data-field="single_squad"></p>
+              <p class="expel_status"></p>
+              <p></p>
+            </div>
+          </div>
+          <div id="column_right">
+            <button class="closebutton" id="close">X</button>
+            <div id="container">
+              <button class="student_options clickexpel">
+                Expel student<span data-field="clickexpel"></span>
               </button>
-              <button class="student_options removesquad">
-                Remove from squad<span data-field="removesquad"></span>
-              </button>
+              <div>
+                <button class="student_options addprefect">
+                  Add to prefect<span data-field="addprefect"></span>
+                </button>
+                <button class="student_options removeprefect">
+                  Remove from prefect<span data-field="removeprefect"></span>
+                </button>
+              </div>
+              <div>
+                <button class="student_options addsquad">
+                  Add to squad<span data-field="addsquad"></span>
+                </button>
+                <button class="student_options removesquad">
+                  Remove from squad<span data-field="removesquad"></span>
+                </button>
+              </div>
             </div>
           </div>
         </div>

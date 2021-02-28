@@ -135,6 +135,8 @@ function prepareObject(jsonObject) {
   student.firstName = studentFirstName;
 
   // Adding middlename, lastname
+  // not working correctly
+  // some Middle names are "" and not null (fucks with filter!!)
   if (studentNameSplit == studentNameSplit[0]) {
     const newMiddleName = studentNameSplit.push(null);
     const newLastName = studentNameSplit.push(null);
@@ -180,6 +182,11 @@ function prepareObject(jsonObject) {
       middleNameBeforeComma.substring(1).toLowerCase();
   }
 
+  // removed "ernie" from middleName (quick fix)
+  if (student.middleName.includes('"')) {
+    student.middleName = null;
+  }
+
   // last name
   const setLastName = studentFullName.substring(lastComma + 1);
   const lastName =
@@ -206,6 +213,16 @@ function prepareObject(jsonObject) {
       student.lastName.substring(ifHyphens + 1).toLowerCase() +
       `_${student.firstName.substring(0, 1).toLowerCase()}` +
       `.png`;
+  }
+
+  // <-- This has to be changed to something lige student-lastName >=2
+  if (student.lastName === "Patil") {
+    student.imageUrl = (
+      student.lastName +
+      "_" +
+      student.firstName +
+      ".png"
+    ).toLowerCase();
   }
 
   // gender
@@ -493,6 +510,10 @@ function showPopOp(student) {
   popop.querySelector(
     ".full_name"
   ).textContent = ` ${student.firstName} ${student.middleName} ${student.lastName}`;
+
+  popop.querySelector(
+    ".nick_name"
+  ).textContent = `Nick name : ${student.nickName}`;
   popop.querySelector(".house").textContent = `House : ${student.house}`;
   popop.querySelector(".gender").textContent = `Gender : ${student.gender}`;
   popop.querySelector(".student_image").src = `images/${student.imageUrl}`;
@@ -557,10 +578,10 @@ function showPopOp(student) {
     buildList();
   }
 
-  // <-- Add Prefect in popup
+  // Add Prefect in popup
   popop.querySelector(".addprefect").addEventListener("click", clickAddPrefect);
 
-  // Remove student in popup
+  // Remove prefect in popup
   popop
     .querySelector(".removeprefect")
     .addEventListener("click", clickRemovePrefect);
@@ -598,31 +619,27 @@ function showPopOp(student) {
     buildList();
   }
 
-  // set & reset color of student === house
-  // <-- might need some cleanUP
-
-  closeWin.classList.remove("gryffindor_color");
-  closeWin.classList.remove("slytherin_color");
-  closeWin.classList.remove("hufflepuff_color");
-  closeWin.classList.remove("ravenclaw_color");
-  document.querySelector("#popup_box").classList.remove("gryffindor_color");
-  document.querySelector("#popup_box").classList.remove("slytherin_color");
-  document.querySelector("#popup_box").classList.remove("hufflepuff_color");
-  document.querySelector("#popup_box").classList.remove("ravenclaw_color");
-
-  // set the color to the house color
+  // set the color and crest to the house color
   if (student.house === "Gryffindor") {
-    document.querySelector("#popup_box").classList.add("gryffindor_color");
-    closeWin.classList.add("gryffindor_color");
+    document.querySelector("#popup_box").style.backgroundColor = "#981c1c";
+    document.querySelector("#column_top").style.backgroundColor = "#981c1c";
+    closeWin.style.backgroundColor = "#981c1c";
+    document.querySelector("#column_top img").src = `my_images/gryffindor.png`;
   } else if (student.house === "Slytherin") {
-    document.querySelector("#popup_box").classList.add("slytherin_color");
-    closeWin.classList.add("slytherin_color");
+    document.querySelector("#popup_box").style.backgroundColor = "#0e6351";
+    document.querySelector("#column_top").style.backgroundColor = "#0e6351";
+    closeWin.style.backgroundColor = "#0e6351";
+    document.querySelector("#column_top img").src = `my_images/slytherin.png`;
   } else if (student.house === "Hufflepuff") {
-    document.querySelector("#popup_box").classList.add("hufflepuff_color");
-    closeWin.classList.add("hufflepuff_color");
+    document.querySelector("#popup_box").style.backgroundColor = "#c68a00";
+    document.querySelector("#column_top").style.backgroundColor = "#c68a00";
+    closeWin.style.backgroundColor = "#c68a00";
+    document.querySelector("#column_top img").src = `my_images/hufflepuff.png`;
   } else {
-    document.querySelector("#popup_box").classList.add("ravenclaw_color");
-    closeWin.classList.add("ravenclaw_color");
+    document.querySelector("#popup_box").style.backgroundColor = "#024b86";
+    document.querySelector("#column_top").style.backgroundColor = "#024b86";
+    closeWin.style.backgroundColor = "#024b86";
+    document.querySelector("#column_top img").src = `my_images/ravenclaw.png`;
   }
 }
 
@@ -754,25 +771,58 @@ function displayNumbers(students) {
     "#notactive_students"
   ).textContent = `Expelled students : ${expelledStudents.length}`;
 
+  /* Number of students in different houses 
+  <--- NOT working
   // students of gryffindor
+  if (students.house === "Gryffindor") {
+    const studentsOfGryffindor = students.length;
+    document.querySelector(
+      "#gryffindor_students"
+    ).textContent = `Gryffindor : ${studentsOfGryffindor}`;
+  } else if (students.house === "Slytherin") {
+    const studentsOfSlytherin = students.length;
+    document.querySelector(
+      "#slytherin_students"
+    ).textContent = `Slytherin : ${studentsOfSlytherin}`;
+  } else if (students.house === "Hufflepuff") {
+    const studentsOfHufflepuff = students.length;
+    document.querySelector(
+      "#hyfflepuff_students"
+    ).textContent = `Hufflepuff : ${studentsOfHufflepuff}`;
+  } else {
+    const studentsOfRacenclaw = students.length;
+    document.querySelector(
+      "#ravenclaw_students"
+    ).textContent = `Ravenclaw : ${studentsOfRacenclaw}`;
+  }
+  */
 }
 
-/*
+// hackTheSystem - not completed
 function hackTheSystem() {
   console.log("the system is being hacked");
 
-  newStudent();
-}
-
-function newStudent() {
   const newStudent = Object.create(Student);
 
   newStudent.firstName = "Siw";
   newStudent.middleName = "Mehlin Højland";
   newStudent.lastName = "Pedersen";
   newStudent.house = "Gryffindor";
-  newStudent.bloodstatus = "Pure-Blood";
+  newStudent.bloodstatus = "🟢 Pure-Blood";
   allStudents.push(newStudent);
+
+  displayHacking();
   buildList();
 }
-*/
+
+function displayHacking() {
+  document.querySelector("#school_crest").classList.add("hacking");
+}
+
+// prevent user to expell newStudent
+
+// add person to squad (setTimeOut)
+
+// reset bloodstatus
+// pureBlood = math.random
+// if student.bloodstatus = halfblood || student.bloodstatus = muggle --> set blodstatus = pureblood

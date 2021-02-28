@@ -1,6 +1,7 @@
 * {
   margin: 0 auto;
   box-sizing: border-box;
+  max-width: 1920px;
 }
 
 /* cursor pointer an all actions*/
@@ -63,6 +64,7 @@ header {
 
 #splash {
   background-image: url(my_images/splash_img.jpg);
+
   min-height: 400px;
   height: 50vh;
   width: 100vw;
@@ -157,9 +159,12 @@ input {
 } /* <-- end */
 
 .single_student {
+  position: relative;
   padding: 2em;
   /*background-color: #981c1c; */ /* test, has to change depending on house*/
-  position: relative;
+}
+
+#popup_student_info {
   display: flex;
   flex-direction: row;
 }
@@ -167,6 +172,19 @@ input {
 .full_name {
   font-size: 2rem;
   padding-bottom: 1rem;
+}
+
+#column_top {
+  position: absolute;
+  top: -80px;
+  left: 32vw;
+  padding: 2rem;
+  border-radius: 50%;
+}
+#column_top img {
+  height: 100px;
+  width: 95px;
+  background-size: cover;
 }
 
 #column_left {
@@ -352,4 +370,20 @@ footer {
 #list {
   padding-right: 2rem;
   padding-left: 2rem;
+}
+
+.hacking {
+  animation-name: spin;
+  animation-duration: 4000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
